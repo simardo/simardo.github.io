@@ -1,26 +1,13 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>MODUL</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <div id="main" class="modul-container">
+    <div id="main">
         <div id="vue"></div>
     </div>
-<script type="text/javascript" src="/app.js"></script>
-<script>
-  (function(){
-    var redirect = sessionStorage.redirect;
-    console.log('load', redirect);
-    console.log('load-href', location.href);
-    delete sessionStorage.redirect;
-    if (redirect && redirect != location.href) {
-      history.replaceState(null, null, redirect);
-    }
-  })();
-</script>
-</body>
+<script type="text/javascript" src="/app.js"></script></body>
 
 </html>
