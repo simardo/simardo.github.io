@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <script>
+        if (location.pathname.startsWith('/')) {
+            sessionStorage.redirect = location.href;
+            location.replace(location.origin + '/');
+        }
+    </script>
+</head>
+
+<body>
+    404
+    <p>
+        <a id="originLink" href="/">Go home</a>
+    </p>
+</body>
+
+<script>
+    (function () {
+        document.getElementById('originlink').href = location.origin;
+    })();
+</script>
+
+</html>
