@@ -35,7 +35,7 @@
 
         function done() {
             const p = new Promise((resolve, reject) => {
-                urlToBase64('/carte/img', resolve, reject);
+                urlToBase64('/carte/225x300.png', resolve, reject);
             });
 
             p.then(c => {
@@ -43,7 +43,7 @@
             });
 
             const g = new Promise((resolve, reject) => {
-                urlToBase64('/carte/gabarit', resolve, reject);
+                urlToBase64('/carte/carte-ul.png', resolve, reject);
             });
 
             g.then(c => {
