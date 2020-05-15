@@ -3,7 +3,7 @@
         console.log('installed');
 
         caches.open('my-cache').then(c => {
-            c.addAll(['https://simardo.github.io/carte']);
+            c.addAll(['https://simardo.github.io/carte/', 'https://simardo.github.io/carte/225x300.png', 'https://simardo.github.io/carte/carte-ul.png']);
         });
     });
 
