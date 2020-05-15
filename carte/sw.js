@@ -3,7 +3,7 @@
         console.log('installed');
 
         caches.open('my-cache').then(c => {
-            c.addAll(['/carte']);
+            c.addAll(['https://simardo.github.io/carte']);
         });
     });
 
