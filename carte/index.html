@@ -13,7 +13,7 @@
 
 <script>
     navigator.serviceWorker
-        .register('/sw')
+        .register('/carte/sw.js')
         .then(function () { console.log("Service Worker Registered"); });
 
     (async function () {
@@ -35,7 +35,7 @@
 
         function done() {
             const p = new Promise((resolve, reject) => {
-                urlToBase64('/img', resolve, reject);
+                urlToBase64('/carte/img', resolve, reject);
             });
 
             p.then(c => {
@@ -43,7 +43,7 @@
             });
 
             const g = new Promise((resolve, reject) => {
-                urlToBase64('/gabarit', resolve, reject);
+                urlToBase64('/carte/gabarit', resolve, reject);
             });
 
             g.then(c => {
