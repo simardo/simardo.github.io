@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exemple géolocalisation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="location">
+        <div>
+            <span>Lat:</span>
+            <span id="lat"></span>
+        </div>
+        <div>
+            <span id="lon">Lon:</span>
+        </div>
+    </div>
+</body>
+
+<script>
+    (async function () {
+        done();
+
+        function done() {
+            const options = {
+                enableHighAccuracy: false,
+                timeout: 3000,
+                maximumAge: 0
+            };
+
+            id = navigator.geolocation.watchPosition(success => {
+                const lat = document.getElementById('lat');
+                lat.innerText = success.coords.latitude;
+
+                const lon = document.getElementById('lon');
+                lon.innerText = success.coords.longitude;
+            }, error => {
+                console.log('Geo error ', error);
+            }, options);
+        }
+    })();
+</script>
