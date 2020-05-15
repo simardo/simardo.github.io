@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exemple Carte virtuelle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <img id="gabarit" alt="carte" style="height:355px; width: 564px;">
+    <img id="photo" alt="photo" style="height:205px; width: 155px; position: fixed; top:10px; left: 385px;">
+</body>
+
+<script>
+    navigator.serviceWorker
+        .register('/sw')
+        .then(function () { console.log("Service Worker Registered"); });
+
+    (async function () {
+        done();
+
+        // const cache = await caches.open('my-cache');
+
+        // cache.match('/img').then(item => {
+        //     if (item) {
+        //         handleRes(item);
+        //     }
+        // });
+
+        // caches.keys().then(keys => {
+        //     keys.map(key => {
+        //         console.log(key)
+        //     })
+        // })
+
+        function done() {
+            const p = new Promise((resolve, reject) => {
+                urlToBase64('/img', resolve, reject);
+            });
+
+            p.then(c => {
+                setSrc('photo', c);
+            });
+
+            const g = new Promise((resolve, reject) => {
+                urlToBase64('/gabarit', resolve, reject);
+            });
+
+            g.then(c => {
+                setSrc('gabarit', c);
+            });
+        }
+
+        function setSrc(i, s) {
+            const ph = document.getElementById(i);
+            ph.setAttribute('src', s);
+        }
+
+        function handleRes(res) {
+
+        }
+
+        function urlToBase64(url, resolve, reject) {
+            let req = new Request(url);
+            fetch(req).then(res => res.blob()).then(b => {
+                const reader = new FileReader;
+                reader.onerror = reject;
+                reader.onload = () => {
+                    resolve(reader.result);
+                };
+                reader.readAsDataURL(b);
+            }, err => {
+                console.log('fetch err', err);
+            })
+
+            // var img = new Image();
+            // img.crossOrigin = "anonymous";
+
+            // img.onload = () => {
+            //     console.log('img');
+            //     var canvas = document.createElement("canvas");
+
+            //     canvas.width = img.width;
+            //     canvas.height = img.height;
+
+            //     // Copy the image contents to the canvas
+            //     var ctx = canvas.getContext("2d", { preserveDrawingBuffer: true });
+
+            //     // Ajout d'un fond blanc pour les png avec transparence. La transparence apparait en noir lors de la conversion jpg
+            //     ctx.fillStyle = '#fff';  /// set white fill style
+            //     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            //     ctx.drawImage(img, 0, 0);
+
+            //     // Get the data-URL formatted image
+            //     // Firefox supports PNG and JPEG. You could check img.src to
+            //     // guess the original format, but be aware the using "image/jpg"
+            //     // will re-encode the image.
+            //     var dataURL = canvas.toDataURL("image/png");
+            //     var dataURLJpeg = canvas.toDataURL("image/jpeg");
+
+            //     resolve(dataURLJpeg);
+            // }
+            // img.onerror = (error) => {
+            //     reject(error);
+            // }
+            // img.src = url;
+        }
+    })();
+</script>
