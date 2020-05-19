@@ -11,7 +11,7 @@
 
 <script>
     (function () {
-        window.setTimeout(() => {
+        window.setInterval(() => {
             getAsync().then(s => {
                 const e = document.getElementById('date');
                 e.innerText = s.dateS + ',' + s.dateR;
