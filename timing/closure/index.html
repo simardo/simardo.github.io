@@ -10,11 +10,15 @@
 </body>
 
 <script>
+    var txt = '';
+
     (function () {
         window.setInterval(() => {
             getAsync().then(s => {
+                txt += s.dateS + ',' + s.dateR + '<br/>';
+
                 const e = document.getElementById('date');
-                e.innerText = s.dateS + ',' + s.dateR;
+                e.innerText = txt;
             });
         }, 10000);
     })();
