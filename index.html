@@ -1,1 +1,61 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css integrity=sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS crossorigin=anonymous><link rel=icon href=/favicon.ico><title>s-cool</title><link href=/js/about.a16976fd.js rel=prefetch><link href=/css/app.ac906db3.css rel=preload as=style><link href=/js/app.fa4caf6c.js rel=preload as=script><link href=/js/chunk-vendors.8c8180ee.js rel=preload as=script><link href=/css/app.ac906db3.css rel=stylesheet></head><body><noscript><strong>We're sorry but s-cool doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.8c8180ee.js></script><script src=/js/app.fa4caf6c.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>s-cool</title>
+    <meta name="description" content="On fait des maths.">
+    <meta name="author" content="Martin Simard">
+    <meta name="theme-color" content="#B12A34">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta property="og:image" content="icons/icon-512.png"> -->
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="manifest" href="js13kpwa.webmanifest"> -->
+    <!-- <script src="data/games.js" defer></script> -->
+    <script src="app.js" defer></script>
+    <script type="module" src="./modules/testmodule.js"></script>
+</head>
+
+<body>
+    <header>
+        <p><a class="logo" href="https://simardo.github.io"><img src="img/js13kgames.png" alt="s-cool"></a></p>
+    </header>
+    <main>
+        <h1>s-cool</h1>
+        <section id="content"></section>
+    </main>
+    <footer>
+        <p>&copy; s-cool 2021, créé et maintenu par <a href="https://github.com/simardo">Martin Simard</a>.</p>
+    </footer>
+
+    <template id="template-scool-arithmetique">
+        <style>
+            p {
+                color: white;
+                background-color: #666;
+                padding: 5px;
+                font-size: xx-large;
+            }
+        </style>
+        <p>
+            <slot name="operator">Operator</slot>
+        </p>
+    </template>
+
+    <template id="template-scool-operation">
+        <style>
+            input {
+                font-size: xx-large;
+            }
+        </style>
+        <div>
+            <span id="left-operand"></span>
+            <span id="operator"></span>
+            <span id="right-operand"></span>
+            <input id="response-input" type="number" autocomplete="off">
+        </div>
+    </template>
+</body>
+
+</html>
