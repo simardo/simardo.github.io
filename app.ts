@@ -163,8 +163,10 @@ const validate: (challenge: Challenge, response: number) => boolean = (c, r) => 
         score[2] = Math.max(score[2] - 1, 0);
     }
 
-    //
-    document.getElementById('results')!.innerHTML = `${left}${opr}${right}=${r}${emojis[score[2]]}`
+    // remove
+    const color: string = r === answer ? 'lime' : 'red';
+    const asw: string = r === answer ? '' : `(${answer})`;
+    document.getElementById('results')!.innerHTML = `${left} ${opr} ${right} = <span style="color: ${color}">${r}</span> ${asw} ${emojis[score[2]]}`;
 
     return r === answer;
 }

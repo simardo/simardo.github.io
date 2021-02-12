@@ -112,8 +112,10 @@ const validate = (c, r) => {
     else {
         score[2] = Math.max(score[2] - 1, 0);
     }
-    //
-    document.getElementById('results').innerHTML = `${left}${opr}${right}=${r}${emojis[score[2]]}`;
+    // remove
+    const color = r === answer ? 'lime' : 'red';
+    const asw = r === answer ? '' : `(${answer})`;
+    document.getElementById('results').innerHTML = `${left} ${opr} ${right} = <span style="color: ${color}">${r}</span> ${asw} ${emojis[score[2]]}`;
     return r === answer;
 };
 customElements.define('scool-arithmetique', class extends HTMLElement {
